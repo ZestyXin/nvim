@@ -15,7 +15,7 @@
 
     let s:p.normal.left     = [ [ s:black, s:yellow ], [ s:yellow, s:black ] ]
     let s:p.normal.middle   = [ [ s:yellow, s:black ] ]  
-    let s:p.normal.right    = [ [ s:black, s:yellow ], [ s:black, s:yellow ] ]
+    let s:p.normal.right    = [ [ s:black , s:yellow], [ s:black, s:yellow ] ]
 
     let s:p.normal.error    = [ [ s:pink,   s:black ] ]
     let s:p.normal.warning  = [ [ s:orange, s:black ] ]
@@ -48,10 +48,10 @@
       \ 'colorscheme': 'mine',
       \ 'active': {
       \     'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
-      \     'right': [['lineinfo'], ['percent'], ['fileinfo'] , ['errormsg']]
+      \     'right': [['lineinfo'], ['percent'], ['fileinfo'], ['errormsg']]
       \ },
       \ 'component': {
-      \     'lineinfo': '▶%3l/%-2c',
+      \     'lineinfo': '▶ %3l:%-2c',
       \     'percent': '≡ %3p%%',
       \ },
       \ 'component_function': {
@@ -66,17 +66,17 @@
     endfunction
 
     function! ShowFileInfo()
-        let file_format = &ff
-        let file_encoding = &fenc!=#""?&fenc:&enc
-        let file_type = &ft!=#""?&ft:"NO"
-        return '🖥 '.toupper(file_format).' 🖊 '.file_encoding.' 🧾 '.file_type
+        let file_format = &fileformat
+        let file_encoding = &fileencoding!=#''?&fileencoding:&encoding
+        let file_type = &filetype!=#''?&filetype:'NO'
+        return '💻 '.toupper(file_format).' ✏  '.file_encoding.' 📓 '.file_type
     endfunction
 
     function! ShowNeomake()
         let leaderf_msg = neomake#statusline#LoclistCounts()
-        let error_msg = has_key(leaderf_msg, 'E') ? '❌ '.leaderf_msg['E'] : ''
-        let warn_msg = has_key(leaderf_msg, 'W') ? '❗ '.leaderf_msg['W'] : ''
-        let x_msg = has_key(leaderf_msg, 'x') ? '❓ '.leaderf_msg['x'] : ''
+        let error_msg = has_key(leaderf_msg, 'E') ? '❌'.leaderf_msg['E'] : ''
+        let warn_msg = has_key(leaderf_msg, 'W') ? '❗'.leaderf_msg['W'] : ''
+        let x_msg = has_key(leaderf_msg, 'x') ? '❓'.leaderf_msg['x'] : ''
         return ''.error_msg.warn_msg.x_msg
     endfunction
     

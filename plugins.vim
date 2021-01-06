@@ -17,6 +17,7 @@ call plug#begin(s:plug_path.'/plugged')
         Plug 'jiangmiao/auto-pairs'
     " Explorer
         Plug 'justinmk/vim-dirvish'
+        Plug 'kristijanhusak/vim-dirvish-git'
     " Ctags
         Plug 'ludovicchabant/vim-gutentags'
     " Lint
@@ -24,8 +25,15 @@ call plug#begin(s:plug_path.'/plugged')
     " Function / MRU
         Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension'}
     " Other
+        "Plug 'airblade/vim-rooter'
         Plug 'tpope/vim-unimpaired'
-        Plug 'airblade/vim-rooter'
+        Plug 'tpope/vim-surround'
+        Plug 'tpope/vim-repeat'
+        Plug 'kana/vim-textobj-user'
+        Plug 'kana/vim-textobj-indent'
+        Plug 'kana/vim-textobj-syntax'
+        Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
+        Plug 'sgur/vim-textobj-parameter'
 call plug#end()
 
 " Load Settings

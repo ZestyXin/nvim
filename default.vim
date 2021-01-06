@@ -73,6 +73,7 @@ endif
 set backspace=indent,eol,start    " Backspace for dummies / 退格键可删除换行符, 制表符
 set linespace=0                   " No extra spaces between rows / 行之间的像素为0
 set number                          " Line numbers on / 显示行数
+set relativenumber
 set showmatch                       " Show matching brackets/parenthesis / 显示匹配的括号
 set incsearch                       " Find as you type search / 在搜索时立即显示匹配的位置
 set hlsearch                        " Highlight search terms / 高亮显示所有匹配项

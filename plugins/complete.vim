@@ -7,7 +7,9 @@
         " clangx
         " neco-vim
         " neoinclude
-    let g:neoinclude#ctags_command = ""
+    let g:neoinclude#ctags_command = ''
+    let g:neoinclude#paths = {'cpp': '/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include/g++-v9' }
+    
         " neopairs
         " neo-snippet
     "let g:neosnippet#snippets_directory = ''
@@ -41,5 +43,5 @@
     
     inoremap <buffer> <silent> <BS>     <C-R>=AutoPairsDelete()<CR>
     inoremap <buffer> <silent> <space>  <C-R>=AutoPairsSpace()<CR>
-    inoremap <buffer> <silent> <M-e>    <C-R>=AutoPairsFastWrap()<CR>
+    " inoremap <buffer> <silent> <M-e>    <C-R>=AutoPairsFastWrap()<CR>
     inoremap <buffer> <silent> <C-l>    <Esc>:call AutoPairsJump()<CR>a

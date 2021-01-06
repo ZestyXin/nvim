@@ -1,6 +1,6 @@
 " Environment
 let g:vimscript_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-let g:python3_host_prog='C:\Users\Zesty\AppData\Local\Programs\Python\Python38\python.exe'
+let g:python3_host_prog='/usr/bin/python'
 
 " Default Settings
 if filereadable(expand(vimscript_path.'/default.vim'))
