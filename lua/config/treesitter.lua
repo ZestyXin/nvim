@@ -1,5 +1,12 @@
+local utils = require('utils')
 local function setup()
-  require('nvim-treesitter.configs').setup({
+  local treesitter = utils.get_plug('nvim-treesitter.configs')
+  if not treesitter then
+    utils.log.error('Cannot load nvim-treesitter')
+    return false
+  end
+
+  treesitter.setup({
     autopairs = {
       enable = true
     },

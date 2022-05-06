@@ -37,6 +37,8 @@ local lsp_config = {
       },
     },
   },
+  tsserver = {
+  },
 }
 
 local function set_sign()

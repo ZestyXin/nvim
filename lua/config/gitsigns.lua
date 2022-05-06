@@ -1,50 +1,75 @@
 local utils = require('utils')
 
-local function stage_hunk()
-  if utils.check_path('gitsigns.nvim') then
-    vim.cmd('Gitsigns stage_hunk')
-  end
-end
+local cmds = {
+  stage_hunk   = function ()
+    local gitsign = utils.get_plug('gitsigns')
+    if not gitsign then
+      utils.log.error('Cannot load gitsigns.nvim')
+      return false
+    end
+    gitsign.stage_hunk()
+  end,
+  stage_buffer = function ()
+    local gitsign = utils.get_plug('gitsigns')
+    if not gitsign then
+      utils.log.error('Cannot load gitsigns.nvim')
+      return false
+    end
+    gitsign.stage_buffer()
 
-local function stage_buffer()
-  if utils.check_path('gitsigns.nvim') then
-    vim.cmd('Gitsigns stage_buffer')
-  end
-end
+  end,
+  reset_hunk   = function ()
+    local gitsign = utils.get_plug('gitsigns')
+    if not gitsign then
+      utils.log.error('Cannot load gitsigns.nvim')
+      return false
+    end
+    gitsign.reset_hunk()
 
-local function reset_hunk()
-  if utils.check_path('gitsigns.nvim') then
-    vim.cmd('Gitsigns reset_hunk')
-  end
-end
+  end,
+  reset_buffer = function ()
+    local gitsign = utils.get_plug('gitsigns')
+    if not gitsign then
+      utils.log.error('Cannot load gitsigns.nvim')
+      return false
+    end
+    gitsign.reset_buffer()
 
-
-local function reset_buffer()
-  if utils.check_path('gitsigns.nvim') then
-    vim.cmd('Gitsigns reset_buffer')
-  end
-end
-
-local function preview_hunk()
-  if utils.check_path('gitsigns.nvim') then
-    vim.cmd('Gitsigns preview_hunk')
-  end
-end
-
-local function prev_hunk()
-  if utils.check_path('gitsigns.nvim') then
-    vim.cmd('Gitsigns prev_hunk')
-  end
-end
-
-local function next_hunk()
-  if utils.check_path('gitsigns.nvim') then
-    vim.cmd('Gitsigns next_hunk')
-  end
-end
+  end,
+  preview_hunk = function ()
+    local gitsign = utils.get_plug('gitsigns')
+    if not gitsign then
+      utils.log.error('Cannot load gitsigns.nvim')
+      return false
+    end
+    gitsign.preview_hunk()
+  end,
+  prev_hunk    = function ()
+    local gitsign = utils.get_plug('gitsigns')
+    if not gitsign then
+      utils.log.error('Cannot load gitsigns.nvim')
+      return false
+    end
+    gitsign.prev_hunk()
+  end,
+  next_hunk    = function ()
+    local gitsign = utils.get_plug('gitsigns')
+    if not gitsign then
+      utils.log.error('Cannot load gitsigns.nvim')
+      return false
+    end
+    gitsign.next_hunk()
+  end,
+}
 
 local function setup()
-  local opts = {
+  local gitsign = utils.get_plug('gitsigns')
+  if not gitsign then
+    utils.log.error('Cannot load gitsigns.nvim')
+    return false
+  end
+
+  gitsign.setup({
     signs = {
       add = {
         hl = "GitSignsAdd",
@@ -88,19 +113,13 @@ local function setup()
     sign_priority = 6,
     update_debounce = 200,
     status_formatter = nil, -- Use default
-  }
-  require('gitsigns').setup(opts)
+  })
 end
+
 
 local modules = {
   setup = setup,
-  stage_hunk = stage_hunk,
-  stage_buffer = stage_buffer,
-  reset_hunk = reset_hunk,
-  reset_buffer = reset_buffer,
-  preview_hunk = preview_hunk,
-  prev_hunk = prev_hunk,
-  next_hunk = next_hunk,
+  cmds = cmds,
 }
 
 return modules

@@ -1,12 +1,13 @@
-local get_plug = require('utils').get_plug
+local utils = require('utils')
 
 local function setup()
   -- Eviline config for lualine
   -- Author: shadmansaleh
   -- Credit: glepnir
-  local lualine = get_plug('lualine')
+  local lualine = utils.get_plug('lualine')
   if not lualine then
-    return
+    utils.log.error('Cannot load lualine.nvim')
+    return false
   end
 
   -- Color table for highlights

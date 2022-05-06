@@ -1,12 +1,34 @@
+local utils = require('utils')
+
 local function setup()
-  vim.g.onedark_style = 'deep'
-  vim.g.onedark_transparent_background = true
-  vim.g.onedark_italic_comment = true
-  vim.g.onedark_disable_terminal_colors = false
-  vim.g.onedark_diagnostics_undercurl = true
-  vim.g.onedark_darker_diagnostics = true
-  vim.g.onedark_hide_ending_tildes = false
-  require('onedark').setup()
+  local onedark = utils.get_plug('onedark')
+  if not onedark then
+    utils.log.error('Cannot load onedark.nvim')
+    return false
+  end
+
+  onedark.setup({
+    style = 'deep',
+    transparent = true,
+    term_colors = false,
+    ending_tildes = false,
+    cmp_itemkind_reverse = false,
+    code_style = {
+        comments = 'italic',
+        keywords = 'none',
+        functions = 'none',
+        strings = 'none',
+        variables = 'none'
+    },
+    colors = {},
+    highlights = {},
+    diagnostics = {
+        darker = true,
+        undercurl = true,
+        background = true,
+    },
+  })
+  onedark.load()
 
   vim.cmd('highlight NotifyERRORBorder  guifg=#f65866')
   vim.cmd('highlight NotifyWARNBorder   guifg=#efbd5d')

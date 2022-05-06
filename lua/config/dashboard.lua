@@ -7,7 +7,22 @@ local function show()
 end
 
 local function setup()
-  vim.g.dashboard_disable_at_vimenter = 'telescope'
+  vim.g.dashboard_default_executive = 'telescope'
+  vim.g.dashboard_custom_header = {
+    '',
+    [[ ________        __    __                             __               ]],
+    [[|        \      |  \  |  \                           |  \              ]],
+    [[ \▓▓▓▓▓▓▓▓      | ▓▓\ | ▓▓ ______   ______  __     __ \▓▓______ ____   ]],
+    [[    /  ▓▓ ______| ▓▓▓\| ▓▓/      \ /      \|  \   /  \  \      \    \  ]],
+    [[   /  ▓▓ |      \ ▓▓▓▓\ ▓▓  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\\▓▓\ /  ▓▓ ▓▓ ▓▓▓▓▓▓\▓▓▓▓\ ]],
+    [[  /  ▓▓   \▓▓▓▓▓▓ ▓▓\▓▓ ▓▓ ▓▓    ▓▓ ▓▓  | ▓▓ \▓▓\  ▓▓| ▓▓ ▓▓ | ▓▓ | ▓▓ ]],
+    [[ /  ▓▓___       | ▓▓ \▓▓▓▓ ▓▓▓▓▓▓▓▓ ▓▓__/ ▓▓  \▓▓ ▓▓ | ▓▓ ▓▓ | ▓▓ | ▓▓ ]],
+    [[|  ▓▓    \      | ▓▓  \▓▓▓\▓▓     \\▓▓    ▓▓   \▓▓▓  | ▓▓ ▓▓ | ▓▓ | ▓▓ ]],
+    [[ \▓▓▓▓▓▓▓▓       \▓▓   \▓▓ \▓▓▓▓▓▓▓ \▓▓▓▓▓▓     \▓    \▓▓\▓▓  \▓▓  \▓▓ ]],
+    '',
+  }
+
+
   vim.g.dashboard_custom_section = {
       a = {
         description = { "  Find File          " },

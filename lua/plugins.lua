@@ -48,6 +48,12 @@ return {
       require('config.lualine').setup()
     end
   },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('config.indent').setup()
+    end,
+  },
 
   -- LSP
   {
@@ -68,20 +74,20 @@ return {
   {
     'hrsh7th/nvim-cmp',
     config = function()
-      require('config.cmp').setup()
+      require('config.completion').setup()
     end,
   },
 
   -- Tools
-  {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-    },
-    config = function()
-      require('config.tree').setup()
-    end
-  },
+  --{
+  --  'kyazdani42/nvim-tree.lua',
+  --  requires = {
+  --    'kyazdani42/nvim-web-devicons',
+  --  },
+  --  config = function()
+  --    require('config.tree').setup()
+  --  end
+  --},
   {
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -94,14 +100,18 @@ return {
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make',
-    -- after = 'nvim-telescope/telescope.nvim',
+  },
+  {
+    'nvim-telescope/telescope-file-browser.nvim',
   },
   {
     'ahmedkhalf/project.nvim',
-    -- after = 'nvim-telescope/telescope.nvim',
     config = function()
       require('config.projects').setup()
-    end
+    end,
+    requires = {
+      'nvim-telescope/telescope.nvim',
+    },
   },
   {
     'phaazon/hop.nvim',
@@ -137,4 +147,11 @@ return {
       require('config.terminal').setup()
     end,
   },
+  {
+    'sindrets/diffview.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('config.diff').setup()
+    end,
+  }
 }

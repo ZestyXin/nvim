@@ -1,29 +1,40 @@
 local utils = require('utils')
 
-local function hint_words()
-  if utils.check_path('hop.nvim') then
-    require('hop').hint_words()
-  end
-end
-
-local function hint_lines()
-  if utils.check_path('hop.nvim') then
-    require('hop').hint_lines()
-  end
-end
+local cmds = {
+  hint_words = function ()
+    local hop = utils.get_plug('hop')
+    if not hop then
+      utils.log.error('Cannot load hop.nvim')
+      return false
+    end
+    hop.hint_words()
+  end,
+  hint_lines = function ()
+    local hop = utils.get_plug('hop')
+    if not hop then
+      utils.log.error('Cannot load hop.nvim')
+      return false
+    end
+    hop.hint_lines()
+  end,
+}
 
 local function setup()
-  local opts = {
+  local hop = utils.get_plug('hop')
+  if not hop then
+    utils.log.error('Cannot load hop.nvim')
+    return false
+  end
+
+  hop.setup({
     keys = 'etovxqpdygfblzhckisuran',
     jump_on_sole_occurrence = false,
-  }
-  require('hop').setup(opts)
+  })
 end
 
 local modules = {
   setup = setup,
-  hint_words = hint_words,
-  hint_lines = hint_lines,
+  cmds = cmds,
 }
 
 return modules
