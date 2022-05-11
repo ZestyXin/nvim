@@ -4,7 +4,7 @@ local lsp_config = {
   clangd = {
     cmd = {
       "clangd",
-      "--query-driver=/usr/bin/gcc,/usr/bin/g++,/usr/bin/arm-none-linux-gnueabi-gcc,/usr/bin/arm-none-linux-gnueabi-g++"
+      "--header-insertion=never",
     }
   },
   cmake = {
