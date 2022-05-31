@@ -19,8 +19,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    branch = '0.5-compat',
-    -- run = ':TSUpdate',
+    run = ':TSUpdate',
     config = function()
       require('config.treesitter').setup()
     end,
@@ -56,6 +55,7 @@ return {
   },
 
   -- LSP
+  { 'b0o/schemastore.nvim' },
   {
     'neovim/nvim-lspconfig',
     config = function ()
@@ -152,6 +152,18 @@ return {
     requires = 'nvim-lua/plenary.nvim',
     config = function()
       require('config.diff').setup()
+    end,
+  },
+  {
+    'ludovicchabant/vim-gutentags',
+    config = function()
+      require('config.tags').setup()
+    end,
+  },
+  {
+    'yamatsum/nvim-cursorline',
+    config = function()
+      require('config.cursor').setup()
     end,
   }
 }

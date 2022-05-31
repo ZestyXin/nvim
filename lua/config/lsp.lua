@@ -18,6 +18,11 @@ local lsp_config = {
   },
   gopls = {
   },
+  html = {
+  },
+  jsonls = {
+      schemas = require('schemastore').json.schemas(),
+  },
   pyright = {
   },
   sumneko_lua = {
